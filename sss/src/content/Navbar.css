@@ -1,0 +1,36 @@
+/* Navbar container styling */
+.navbar {
+  padding: 1rem 2rem;
+  min-height: 80px;
+}
+
+/* FIX: Increased specificity (.navbar .navbar-brand) to override Bootstrap without !important */
+.navbar .navbar-brand {
+  font-size: 2rem; /* bigger brand text */
+}
+
+/* FIX: Increased specificity for nav links */
+.navbar .nav-link {
+  font-size: 1.2rem; /* bigger nav text */
+  margin: 0 10px;   /* spacing between items */
+  transition: color 0.3s ease;
+}
+
+/* FIX: Increased specificity for the hover effect, removing !important */
+.navbar .nav-link:hover {
+  /* Using Bootstrap's CSS variable is best practice for theme consistency */
+  color: var(--bs-success); 
+}
+
+/* Scoped the button style to the navbar for predictability */
+.navbar .btn-success {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar .btn-success:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+}

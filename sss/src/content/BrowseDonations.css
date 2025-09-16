@@ -1,0 +1,352 @@
+/* ==========================================================================
+   BrowseDonations.css - Styles for the FoodLink Donation Browser (No Map)
+   ========================================================================== */
+
+/* --- 1. Global Styles & Variables --- */
+:root {
+    --color-primary: #10b981; /* Emerald 600 */
+    --color-primary-dark: #047857; /* Emerald 700 */
+    --color-secondary: #f59e0b; /* Amber 500 */
+    --color-secondary-dark: #d97706; /* Amber 600 */
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-300: #d1d5db;
+    --color-gray-500: #6b7280;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-white: #ffffff;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --border-radius: 0.75rem; /* 12px */
+}
+
+.browse-donations-page {
+    min-height: 100vh;
+    background-color: var(--color-gray-50);
+    font-family: var(--font-sans);
+    color: var(--color-gray-800);
+}
+
+.container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* --- 2. Header --- */
+.app-header {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+.app-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.main-nav {
+    display: none;
+}
+@media (min-width: 768px) {
+    .main-nav {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        font-weight: 500;
+        color: var(--color-gray-700);
+    }
+}
+.main-nav a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease-in-out;
+}
+.main-nav a:hover {
+    color: var(--color-primary);
+}
+.main-nav a.active {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 4px;
+}
+
+/* --- 3. Main Layout --- */
+.main-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 1024px) {
+    .main-layout {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.content-panel {
+    grid-column: span 1 / span 1;
+}
+@media (min-width: 1024px) {
+    .content-panel {
+        grid-column: span 3 / span 3;
+    }
+}
+
+/* --- 4. Filter Sidebar --- */
+.filter-sidebar {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-gray-100);
+    height: fit-content;
+    position: sticky;
+    top: 6rem;
+}
+.sidebar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+.filter-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-gray-700);
+}
+.filter-group input, .filter-group select {
+    width: 100%;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    background-color: var(--color-gray-50);
+    transition: all 0.2s ease-in-out;
+}
+.filter-group input:focus, .filter-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}
+.checkbox-control {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.checkbox-control input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    border-color: var(--color-gray-300);
+    color: var(--color-primary);
+}
+.checkbox-control label {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+.search-control {
+    position: relative;
+}
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-gray-500);
+}
+.search-control input {
+    padding-left: 2.5rem;
+}
+
+/* --- 5. Content Panel & Cards --- */
+.no-donations-card {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-gray-100);
+    text-align: center;
+    color: var(--color-gray-500);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.no-donations-icon {
+    width: 5rem;
+    height: 5rem;
+    color: var(--color-gray-300);
+    margin-bottom: 1.5rem;
+}
+.no-donations-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+.donation-card {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-gray-100);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Donation Card Specifics */
+.card-top-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+@media (min-width: 640px) {
+    .card-top-section {
+        flex-direction: row;
+    }
+}
+.card-image-wrapper {
+    width: 100%;
+    height: 10rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-gray-100);
+}
+@media (min-width: 640px) {
+    .card-image-wrapper {
+        width: 10rem;
+    }
+}
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card-details {
+    flex-grow: 1;
+}
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1rem;
+    font-size: 0.875rem;
+}
+.detail-label {
+    color: var(--color-gray-500);
+}
+.detail-value {
+    font-weight: 500;
+    word-break: break-word;
+}
+.phone-link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.phone-link:hover {
+    text-decoration: underline;
+}
+.card-bottom-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--color-gray-100);
+    padding-top: 1.5rem;
+    margin-top: auto;
+}
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.icon-badge {
+    width: 1rem;
+    height: 1rem;
+}
+.status-gray { background-color: var(--color-gray-100); color: var(--color-gray-700); }
+.status-amber { background-color: #fffbeb; color: #b45309; }
+.status-emerald { background-color: #ecfdf5; color: #065f46; }
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+.btn {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+    background-color: var(--color-secondary-dark);
+}
+.btn-tertiary {
+    border: 1px solid var(--color-gray-300);
+    color: var(--color-gray-700);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+.btn-tertiary:hover {
+    background-color: var(--color-gray-50);
+}
