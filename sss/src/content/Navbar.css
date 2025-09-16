@@ -28,9 +28,17 @@
   padding: 10px 20px;
   border-radius: 30px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 900;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .navbar .btn-success:hover {
   transform: scale(1.08);
   box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
 }
+
+.logo-hh{
+  font-weight: 900;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+

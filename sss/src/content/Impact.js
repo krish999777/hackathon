@@ -1,10 +1,7 @@
-// src/Dashboard.js
-
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { FaUtensils, FaHandsHelping, FaUsers, FaHandshake, FaGlobeAmericas, FaSun, FaMoon } from 'react-icons/fa';
-import StatsBar from './StatsBar';
-import StatsRow from './StatsRow';
+// Removed unused components
 
 // --- Custom Hook for Animating Numbers --- //
 const useCountUp = (end, duration = 1500) => {
@@ -57,13 +54,13 @@ const PIE_COLORS = ['#38bdf8', '#fb7185', '#a78bfa'];
 const SummaryCard = ({ icon, value, label, color }) => {
     const animatedValue = useCountUp(parseInt(value.replace(/,/g, '')));
     return (
-        <div className="p-4 bg-slate-50/50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center space-x-3 transition-colors duration-300">
-            <div className={`p-3 rounded-full ${color.bg} ${color.text}`}>
+        <div className="p-3 rounded border d-flex align-items-center gap-3 h-100 bg-white">
+            <div className="p-2 rounded-circle bg-light text-dark">
                 {icon}
             </div>
             <div>
-                <p className="text-2xl font-bold text-slate-800 dark:text-slate-100">{animatedValue}</p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{label}</p>
+                <p className="fs-4 fw-bold mb-1 text-dark">{animatedValue}</p>
+                <p className="small text-muted mb-0">{label}</p>
             </div>
         </div>
     );
@@ -100,6 +97,17 @@ function Impact() {
         <div className="bg-slate-100 dark:bg-slate-900 min-h-screen p-4 sm:p-6 font-sans text-slate-800 dark:text-slate-300 transition-colors duration-300">
             <h2 className="text-success text-center mb-3" style={{fontWeight:'600'}}>The Impact We Made 📊</h2>
             <div className="max-w-7xl mx-auto">
+                {/* Stats at the top (vertical) */}
+                <div className="bg-white p-4 rounded-3 shadow-sm border mb-4">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 g-3">
+                        {summaryData.map((item, index) => (
+                            <div className="col" key={index}>
+                                <SummaryCard {...item} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="lg:col-span-2 bg-white dark:bg-slate-800 p-5 rounded-xl shadow-md border border-slate-100 dark:border-slate-700 transition-colors duration-300">
                          
                          <ResponsiveContainer width="100%" height={300}>
@@ -113,18 +121,8 @@ function Impact() {
                         </ResponsiveContainer>
                     </div>
                 
-                {/* --- NEW Horizontal Header Block --- */}
-                {/* <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg mb-6 transition-colors duration-300">
-                    <div className="flex justify-between items-start mb-4">
-                        
-                        
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                        {summaryData.map((item, index) => <SummaryCard key={index} {...item} />)}
-                    </div>
-                </div> */}
+                {/* Charts Section */}
 
-                {/* --- Charts Section --- */}
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                     <div className="lg:col-span-3 bg-white dark:bg-slate-800 p-5 rounded-xl shadow-md border border-slate-100 dark:border-slate-700 transition-colors duration-300">
                         <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-4">Monthly Progress (in thousands)</h3>
@@ -140,7 +138,7 @@ function Impact() {
                             </LineChart>
                         </ResponsiveContainer>
                     </div>
-                    <StatsRow/>
+                    {/* Right column left empty or for future widgets */}
 
                     
                 </div>

@@ -12,8 +12,8 @@ const Navbar = () => {
         <div className="container-fluid">
 
           {/* FIX 2: Changed the brand from <a> to <Link> and pointed it to the homepage ('/'). */}
-          <Link className="navbar-brand fw-bold fs-4 text-success" to="/">
-            🌱 DonorHub
+          <Link className="navbar-brand fw-bold fs-4 text-success " to="/">
+            <p className='logo-hh'>Food For Life</p>
           </Link>
 
           {/* Mobile toggle */}

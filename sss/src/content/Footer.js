@@ -8,9 +8,9 @@ const Footer = () => {
         <div className="row">
           {/* Brand / About */}
           <div className="col-md-4 mb-4">
-            <h4 className="fw-bold text-success">🌱 DonorHub</h4>
+            <h4 className=" text-success logo-hh">Food For Life</h4>
             <p className="small text-muted">
-              DonorHub connects generous donors with those in need. Together, we
+              Food For Lifeconnects generous donors with those in need. Together, we
               create meaningful impact and make giving easier than ever.
             </p>
             {/* Social Icons */}
@@ -34,11 +34,12 @@ const Footer = () => {
           <div className="col-md-2 mb-4">
             <h6 className="fw-bold">Quick Links</h6>
             <ul className="list-unstyled">
-              <li><a href="/donation" className="footer-link">Donations</a></li>
+              <li><a href="/" className="footer-link">Home</a></li>
             
-              <li><a href="#" className="footer-link">Impact</a></li>
-              <li><a href="#" className="footer-link">Campaigns</a></li>
-              <li><a href="#" className="footer-link">Fundraisers</a></li>
+              <li><a href="/about" className="footer-link">About</a></li>
+              <li><a href="/postdonation" className="footer-link">Post Donation</a></li>
+              <li><a href="/browsedonation" className="footer-link">Browse Donations</a></li>
+              <li><a href="/impact" className="footer-link">Impact</a></li>
             </ul>
           </div>
 
@@ -76,7 +77,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center mt-4">
           <p className="small text-muted mb-0">
-            © {new Date().getFullYear()} DonorHub — All Rights Reserved
+            © {new Date().getFullYear()} Food For Life— All Rights Reserved
           </p>
         </div>
       </div>
