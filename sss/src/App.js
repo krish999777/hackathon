@@ -8,6 +8,8 @@ import PageNotFound from './content/PageNotFound';
 
 // Imports are consolidated into one line for cleanliness
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AboutPage from './content/AboutPage';
+import Impact from './content/Impact';
 
 function App() {
   return (
@@ -20,9 +22,11 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/postdonation' element={<Donation />} />
           <Route path='/browsedonation' element={<BrowseDonations />} />
-          
+          <Route path='/about' element={<AboutPage />} />
+          <Route path='/impact' element={<Impact/>} />
           {/* This "catch-all" route should be last */}
           <Route path='*' element={<PageNotFound />} />
+          
         </Routes>
         <Footer />
       </Router>
